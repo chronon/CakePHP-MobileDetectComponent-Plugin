@@ -1,0 +1,58 @@
+<?php
+/**
+ * MobileDetectComponent
+ *
+ * A component for identifying mobile devices using the Mobile_Detect project.
+ * https://github.com/serbanghita/Mobile-Detect
+ *
+ * PHP version 5
+ *
+ * @package		MobileDetectComponent
+ * @author		Gregory Gaskill <one@chronon.com>
+ * @license		MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @link		https://github.com/chronon/CakePHP-MobileDetectComponent-Plugin
+ */
+
+App::uses('Component', 'Controller');
+
+/**
+ * MobileDetectComponent
+ *
+ * @package		MobileDetectComponent
+ */
+class MobileDetectComponent extends Component {
+
+/**
+ * The MobileDetect object
+ *
+ * @var object
+ * @access public
+ */
+	public $MobileDetect = null;
+
+/**
+ * Loads the Mobile_Detect class, runs the given Mobile_Detect method. Uses
+ * 'isMobile' if no method given.
+ *
+ * @param string $method The method to run
+ * @return bool
+ * @throws CakeException
+ */
+	public function detect($method = 'isMobile') {
+		// load the Mobile_Detect vendor class
+		App::import('Vendor', 'MobileDetect.Mobile-Detect', array(
+			'file' => 'Mobile-Detect' . DS . 'Mobile_Detect.php')
+		);
+		// create the object
+		$this->MobileDetect = new Mobile_Detect();
+
+		// abort if vendor class can't be loaded.
+		if (!class_exists('Mobile_Detect')) {
+			throw new CakeException('Mobile_Detect is missing or could not be loaded.');
+		}
+
+		$result = $this->MobileDetect->{$method}();
+		return $result;
+	}
+
+}
