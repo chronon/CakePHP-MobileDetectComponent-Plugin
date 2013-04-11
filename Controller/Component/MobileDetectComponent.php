@@ -43,7 +43,7 @@ class MobileDetectComponent extends Component {
 		if (!class_exists('Mobile_Detect')) {
 			// load the Mobile_Detect vendor class
 			$loaded = App::import('Vendor', 'MobileDetect.MobileDetect', array(
-				'file' => 'Mobile-Detect' . DS . 'Mobile_Detect.php')
+				'file' => 'MobileDetect' . DS . 'Mobile_Detect.php')
 			);
 			// abort if vendor class can't be loaded.
 			if (!$loaded) {
