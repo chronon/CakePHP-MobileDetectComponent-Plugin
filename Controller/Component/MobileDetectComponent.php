@@ -35,23 +35,25 @@ class MobileDetectComponent extends Component {
  * 'isMobile' if no method given.
  *
  * @param string $method The method to run
- * @return bool
+ * @param string $args Optional arguments to the given method
+ * @return mixed
  * @throws CakeException
  */
-	public function detect($method = 'isMobile') {
-		// load the Mobile_Detect vendor class
-		App::import('Vendor', 'MobileDetect.Mobile-Detect', array(
-			'file' => 'Mobile-Detect' . DS . 'Mobile_Detect.php')
-		);
-		// create the object
-		$this->MobileDetect = new Mobile_Detect();
-
-		// abort if vendor class can't be loaded.
+	public function detect($method = 'isMobile', $args = null) {
 		if (!class_exists('Mobile_Detect')) {
-			throw new CakeException('Mobile_Detect is missing or could not be loaded.');
+			// load the Mobile_Detect vendor class
+			$loaded = App::import('Vendor', 'MobileDetect.MobileDetect', array(
+				'file' => 'Mobile-Detect' . DS . 'Mobile_Detect.php')
+			);
+			// abort if vendor class can't be loaded.
+			if (!$loaded) {
+				throw new CakeException('Mobile_Detect is missing or could not be loaded.');
+			}
+			// create the object
+			$this->MobileDetect = new Mobile_Detect();
 		}
 
-		$result = $this->MobileDetect->{$method}();
+		$result = $this->MobileDetect->{$method}($args);
 		return $result;
 	}
 
