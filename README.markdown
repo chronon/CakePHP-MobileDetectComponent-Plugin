@@ -43,18 +43,18 @@ Example: check if a request is from an iOS device :
 
 	$result = $this->MobileDetect->detect('isiOS');
 
-Example: get version number of Android device:
+Example: get version number of an Android device:
 	
 	$result = $this->MobileDetect->detect('version', 'Android');
 
-See the demo at [mobiledetect.net/](http://mobiledetect.net/) for a list of all available methods.
+See the demo at [mobiledetect.net](http://mobiledetect.net/) for a list of all available methods.
 
 Example:
 --------
 
 Let's say we want to serve a mobile layout to smartphones and a desktop layout to
 tablets. Instead of loading the component on every request (by adding it to your controller's
-$components array), we'll load the component on the fly when needed. This example set's a session
+`$components` array), we'll load the component on the fly when needed. This example set's a session
 variable `tablet` if the request is from a tablet, calling the component only once.
 
 In `Controller/AppController.php`:
