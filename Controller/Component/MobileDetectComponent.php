@@ -23,6 +23,14 @@ App::uses('Component', 'Controller');
 class MobileDetectComponent extends Component {
 
 /**
+ * The state of the Mobile_Detect class
+ *
+ * @var bool
+ * @access public
+ */
+	public $loaded = false;
+
+/**
  * The MobileDetect object
  *
  * @var object
@@ -41,20 +49,21 @@ class MobileDetectComponent extends Component {
  */
 	public function detect($method = 'isMobile', $args = null) {
 		if (!class_exists('Mobile_Detect')) {
-			// load the Mobile_Detect vendor class
+			// load the vendor class if it hasn't allready been autoloaded.
 			$loaded = App::import('Vendor', 'MobileDetect.MobileDetect', array(
 				'file' => 'MobileDetect' . DS . 'Mobile_Detect.php')
 			);
-			// abort if vendor class can't be loaded.
+			// abort if vendor class wasn't autoloaded and can't be found.
 			if (!$loaded) {
 				throw new CakeException('Mobile_Detect is missing or could not be loaded.');
 			}
-			// create the object
+		}
+		// instantiate once per method call
+		if (!($this->MobileDetect instanceof Mobile_Detect)) {
 			$this->MobileDetect = new Mobile_Detect();
 		}
 
-		$result = $this->MobileDetect->{$method}($args);
-		return $result;
+		return $this->MobileDetect->{$method}($args);
 	}
 
 }

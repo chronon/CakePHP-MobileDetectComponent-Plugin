@@ -18,6 +18,33 @@ Tested with CakePHP 2.3.x, but should work fine with any CakePHP 2.x version.
 Installation:
 -------------
 
+**Using [Composer](http://getcomposer.org/)/[Packagist](https://packagist.org):**
+
+In your project `composer.json` file:
+
+```
+{
+	"require": {
+		"chronon/mobile_detect": "*"
+	},
+	"config": {
+        "vendor-dir": "Vendor"
+    }
+}
+```
+
+This will install the plugin into `Plugin/MobileDetect`, and install the Mobile_Detect lib 
+(from Packagist) into your `Vendor` directory.
+
+In your app's `Config/bootstrap.php`, import composer's autoload file:
+
+```php
+<?php
+App::import('Vendor', array('file' => 'autoload'));
+```
+
+**Using git:**
+
 You will need the component (packaged as a plugin), and the MobileDetect PHP library (not included). The
 MobileDetect library needs to be in this plugin's Vendor directory and must be named 'MobileDetect'. 
 Using git, something like this:
