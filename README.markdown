@@ -105,10 +105,7 @@ protected function _setMobile() {
 
 protected function _isTablet() {
 	if ($this->Session->check('tablet')) {
-		if ($this->Session->read('tablet') == true) {
-			return true;
-		}
-		return false;
+		return $this->Session->read('tablet');
 	}
 	// load the component
 	$this->MobileDetect = $this->Components->load('MobileDetect.MobileDetect');
