@@ -50,8 +50,8 @@ MobileDetect library needs to be in this plugin's Vendor directory and must be n
 Using git, something like this:
 
 ``` sh
-git clone git@github.com:chronon/CakePHP-MobileDetectComponent-Plugin.git APP/Plugin/MobileDetect  
-git clone git@github.com:serbanghita/Mobile-Detect.git APP/Plugin/MobileDetect/Vendor/MobileDetect
+git clone git@github.com:chronon/CakePHP-MobileDetectComponent-Plugin.git app/Plugin/MobileDetect  
+git clone git@github.com:serbanghita/Mobile-Detect.git app/Plugin/MobileDetect/Vendor/MobileDetect
 ```
 
 The MobileDetect library could also be added as a git submodule...
