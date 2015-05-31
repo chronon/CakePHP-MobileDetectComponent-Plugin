@@ -13,7 +13,12 @@ a plugin, makes MobileDetect available in a CakePHP controller.
 Compatibility:
 --------------
 
-Tested with CakePHP 2.3.x, but should work fine with any CakePHP 2.x version.
+Tested with CakePHP 2.6.x, but should work fine with any CakePHP 2.x version.
+
+**NOTE:** This plugin is not CakePHP 3.x compatible, but the `Mobile_Detect` lib is included with the CakePHP 3 [app skeleton](https://github.com/cakephp/app) and can be used and extended as needed making this plugin unnecessary.
+
+* <https://github.com/cakephp/app/pull/38/>
+* <https://github.com/cakephp/cakephp/pull/3031>
 
 Installation:
 -------------
