@@ -13,7 +13,7 @@ a plugin, makes MobileDetect available in a CakePHP controller.
 Compatibility:
 --------------
 
-Tested with CakePHP 2.6.x, but should work fine with any CakePHP 2.x version.
+Tested with CakePHP 2.10.x, but should work fine with any CakePHP 2.x version.
 
 **NOTE:** This plugin is not CakePHP 3.x compatible, but the `Mobile_Detect` lib is included with the CakePHP 3 [app skeleton](https://github.com/cakephp/app) and can be used and extended as needed making this plugin unnecessary.
 
@@ -59,8 +59,6 @@ git clone git@github.com:chronon/CakePHP-MobileDetectComponent-Plugin.git app/Pl
 git clone git@github.com:serbanghita/Mobile-Detect.git app/Plugin/MobileDetect/Vendor/MobileDetect
 ```
 
-The MobileDetect library could also be added as a git submodule...
-
 Usage:
 ------
 
@@ -76,7 +74,7 @@ Example: check if a request is from an iOS device :
 	$result = $this->MobileDetect->detect('isiOS');
 
 Example: get version number of an Android device:
-	
+
 	$result = $this->MobileDetect->detect('version', 'Android');
 
 See the demo at [mobiledetect.net](http://mobiledetect.net/) for a list of all available methods.
@@ -117,6 +115,7 @@ protected function _isTablet() {
 	// pass the component the 'isTablet' method
 	$result = $this->MobileDetect->detect('isTablet');
 	$this->Session->write('tablet', $result);
+
 	return $result;
 }
 ```
